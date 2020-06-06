@@ -13,6 +13,7 @@ import { ProduitpainComponent } from './produits/produitpain/produitpain.compone
 import { ProduitlegumeComponent } from './produits/produitlegume/produitlegume.component';
 import { ProduitviandeComponent } from './produits/produitviande/produitviande.component';
 import { ProduitresultComponent } from './shared/produitresult/produitresult.component';
+import { AchattermineComponent } from './achattermine/achattermine.component';
 
 // the second parameter 'fr-FR' is optional
 registerLocaleData(localeFr, 'fr-FR');
@@ -27,7 +28,8 @@ registerLocaleData(localeFr, 'fr-FR');
     ProduitpainComponent,
     ProduitlegumeComponent,
     ProduitviandeComponent,
-    ProduitresultComponent
+    ProduitresultComponent,
+    AchattermineComponent
   ],
   imports: [
     BrowserModule,
