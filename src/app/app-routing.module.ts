@@ -8,6 +8,7 @@ import { ProduitpainComponent } from './produits/produitpain/produitpain.compone
 import { ProduitviandeComponent } from './produits/produitviande/produitviande.component';
 import { ProduitfromageComponent } from './produits/produitfromage/produitfromage.component';
 import { AchattermineComponent } from './achattermine/achattermine.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "panier", component: PanierComponent },
   { path: "achatterminer", component: AchattermineComponent },
+  { path: "confirmation/:firstname/:lastname/:email/:adr/:tel", component:ConfirmationComponent},
   { path: "**", component: PagenotfoundComponent },
 ];
 

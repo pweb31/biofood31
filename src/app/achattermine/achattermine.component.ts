@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PanierService } from '../services/panier.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-achattermine',
@@ -15,7 +16,7 @@ export class AchattermineComponent implements OnInit {
   frais:number = 3.00;
   soustotal:number = 0.00;
   total:number = 0.00;
-  constructor(private formBuilder: FormBuilder,private panier: PanierService) { 
+  constructor(private formBuilder: FormBuilder,private panier: PanierService, private router: Router) { 
     this.cartItems = this.panier.getItemsFromCart();
     this.cartItems.forEach(element => console.log('product price : ',element.prix));
     this.cartItems.forEach(element => this.soustotal += element.prix);
@@ -29,7 +30,7 @@ export class AchattermineComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      tel: ['', Validators.required],
+      tel: ['', [Validators.required, Validators.pattern("0[6-7][0-9 ]{8}")]],
       adr: ['', Validators.required],
       cb: ['', Validators.required]
   });
@@ -44,6 +45,14 @@ export class AchattermineComponent implements OnInit {
       if (this.registerForm.invalid) {
           return;
       }
+
+      const firstname = this.registerForm.get('firstName').value;
+      const lastname = this.registerForm.get('lastName').value;
+      const email = this.registerForm.get('email').value;
+      const adresse = this.registerForm.get('adr').value;
+      const telephone = this.registerForm.get('tel').value;
+
+      this.router.navigate(['/confirmation' , firstname, lastname, email, adresse, telephone]);
 
       // s'affiche si les valeurs du formulaires sont valides
       console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
